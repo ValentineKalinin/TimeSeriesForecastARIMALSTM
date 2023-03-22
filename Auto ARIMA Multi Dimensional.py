@@ -102,13 +102,3 @@ plt.title('Forecast Future')
 ax.plot(pd.concat([final_df['<CLOSE>'][split - 1:], forecast_future_df], axis=1))
 plt.show()
 
-fig = px.line(pd.concat([final_df['<CLOSE>'][split - 1:], forecast_future_df], axis=1), x='<DATE>', y='<CLOSE>', title='LTC/USDT')
-fig.update_xaxes(
-    rangeslider_visible=True,
-    rangeselector=dict(
-        buttons=list([
-            dict(step="all")
-        ])
-    )
-)
-fig.show()
