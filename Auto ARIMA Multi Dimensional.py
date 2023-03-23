@@ -42,7 +42,7 @@ plt.show()
 
 
 # 4. Group values for better prediction
-final_df = el_df.resample('d').mean()
+final_df = el_df.resample('12H').mean()
 # el_df.resample('d').mean().plot(subplots=True)
 fig, ax = plt.subplots()
 ax.plot(final_df)
@@ -54,7 +54,7 @@ print(final_df.head())
 # 5. Auto ARIMA model -> (p,d,q)
 model = pm.auto_arima(final_df['<CLOSE>'],
                       # m=12, seasonal=True,
-                      start_p=1, statr_d=1, start_q=1,
+                      start_p=0, statr_d=0, start_q=0,
                       max_p=7, max_d=3, max_q=3,
                       test='adf', error_action='ignore',
                       suppress_warnings=True, trace=True, stepwise=False)
@@ -99,6 +99,5 @@ print('forecast_future_df ', forecast_future_df)
 # pd.concat([final_df['<CLOSE>'][split - 1:], forecast_future_df], axis=1).plot()
 fig, ax = plt.subplots()
 plt.title('Forecast Future')
-ax.plot(pd.concat([final_df['<CLOSE>'][split - 1:], forecast_future_df], axis=1))
+ax.plot(pd.concat([final_df['<CLOSE>'][split - 10:], forecast_future_df], axis=1))
 plt.show()
-
