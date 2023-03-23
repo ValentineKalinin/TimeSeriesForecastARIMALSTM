@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import pmdarima as pm
 
 # 1. Open CSV with data
-# 2x -> LTC-USD_5min_2.csv
-# 4x -> LTC-USD_5min_4.csv
+# 2-x -> LTC-USD_5min_2.csv
+# 4-x -> LTC-USD_5min_4.csv
 df = pd.read_csv('Datasets/LTC-USD_5min_4.csv')
 df['<DATE>'] = pd.to_datetime(df['<DATE>'])
 # print(df.head())
